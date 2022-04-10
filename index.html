@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Back End Assessment</title>
+    <link href="styles.css" rel="stylesheet"/>
+  </head>
+  <h1>This is your lucky day!</h1>
+  <p></p>
+  <body class="container">
+    <button id="complimentButton">Get a Compliment</button>
+    <button id="fortuneButton">Get a Fortune</button>
+    <form id="questionAndAnswer">
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      document.getElementById("complimentButton").onclick = function () {
+        axios.get("http://localhost:4000/api/compliment/")
+            .then(function (response) {
+              const data = response.data;
+              alert(data);
+            });
+      };
+
+      document.getElementById("fortuneButton").onclick = function () {
+        axios.get("http://localhost:4000/api/fortune/")
+            .then(function (response) {
+              const data = response.data;
+              alert(data);
+            });
+      };
+
+    </script>
+  </body>
+  <p></p>
+  <form id="questionAndAnswer">
+  <label for="questionAndAnswer">Choose a Question:</label>
+<select>
+  <option value="firstQuestion">Will I be rich?</option>
+  <option value="secondQuestion">Will I be famous?</option>
+  <option value="thirdQuestion">Will I be happy?</option>
+  <option value="fourthQuestion">Will I make a difference?</option>
+</select>
+</form>
+
+<script>
+ document.getElementById("questionAndAnswer").onchange = function () {
+  axios.get("http://localhost:4000/api/questionAndAnswer/")
+      .then(function (response) {
+        const data = response.data;
+        alert(data);
+      });
+};
+</script>
+
+<p></p>
+  <form id="addAnswer">
+    <label for="addAnswer">Add an Answer</label>
+			<input name="answerInput" id="answerInput" type="text">
+  </form>
+  <script>
+    document.getElementById("addAnswer").onchange = function () {
+     axios.get("http://localhost:4000/api/answerInput/")
+         .then(function (response) {
+           const data = response.data;
+           alert(data);
+         });
+   };
+   </script>
+   
+<p></p>
+  <form id="deleteAnswer">
+    <label for="deleteAnswer">Delete an Answer</label>
+			<input name="deleteInput" id="deleteInput" type="text">
+  </form>
+
+  <script>
+    document.getElementById("deleteAnswer").onchange = function () {
+     axios.delete("http://localhost:4000/api/deleteInput/")
+         .then(function (response) {
+           const data = response.data;
+           alert(data);
+         });
+   };
+   </script>   
+  
+<p>Remember To:
+  <ul style="list-style-type:disc">
+  <li>Smile</li>
+  <li>Stop and Smell the Roses</li>
+  <li>Have a Great Day!</li>
+  </ul>
+</p>
+  <div style="font-size:80px">&#x1F340;</div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

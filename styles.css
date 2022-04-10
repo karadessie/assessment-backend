@@ -1,0 +1,19 @@
+body {
+    background: #e3fae3;
+    margin: 1rem;
+    padding: 1rem;
+    max-width: 600px;
+    margin: 2rem auto;
+    font-family: "Yeseva One", Yeseva One;
+  }
+  input {
+	display: flex;
+}
+#complimentButton{
+	background-color: white;
+	padding: 7px;
+}
+#fortuneButton {
+	background-color: white;
+	padding: 7px;
+}
