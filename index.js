@@ -40,8 +40,8 @@ app.get("/api/questionAndAnswer", (req, res) => {
   res.status(200).send(answersPhrase);   
 });
 
-app.get("/api/:id", (req, res) => {
-    const newAnswer = req.query.id
+app.post("/api/answerInput", (req, res) => {
+    const newAnswer = req.body
     console.log(newAnswer)
     const answers = ["Of Course!",
     "You Betcha!",
@@ -52,9 +52,21 @@ app.get("/api/:id", (req, res) => {
   return
 });
 
-app.delete("/api/:id", (req, res) => {
-  res.status(200).send("Successfully Deleted!");
-  return
+app.delete("/api/deleteInput", (req, res) => {
+  const newDelete = req.body
+  console.log(newDelete)
+  const answers = ["Of Course!",
+    "You Betcha!",
+    "Abolutely!",
+    "Any Day Now!"]
+    for (let i = 0; 1 < answers.length; i++) {
+      if  (newDelete === answers[i]) {
+          answers.splice(i, 1)
+     res.status(200).send("Successfully deleted!")
+     return
+   }
+  }
+  res.status(400).send("Answer not found.")
 });
 
 app.listen(4000, () => console.log("Server running on 4000"))
