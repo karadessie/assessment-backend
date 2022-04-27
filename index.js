@@ -52,21 +52,20 @@ app.post("/api/answerInput", (req, res) => {
   return
 });
 
-app.delete("/api/deleteInput", (req, res) => {
+app.delete("/api/deleteAnswer/:deleteInput", (req, res) => {
   const newDelete = req.body
   console.log(newDelete)
   const answers = ["Of Course!",
     "You Betcha!",
     "Abolutely!",
     "Any Day Now!"]
-    for (let i = 0; 1 < answers.length; i++) {
-      if  (newDelete === answers[i]) {
+  for (let i = 0; 1 < answers.length; i++) {
+    if  (newDelete === answers[i]) {
           answers.splice(i, 1)
-     res.status(200).send("Successfully deleted!")
-     return
-   }
-  }
-  res.status(400).send("Answer not found.")
+     res.status(200).send("Successfully deleted!")  
+    }
+    return res.status(400).send("Answer not found.")   
+    }
 });
 
 app.listen(4000, () => console.log("Server running on 4000"))
