@@ -52,17 +52,17 @@ app.post("/api/answerInput", (req, res) => {
   return
 });
 
-app.delete("/api/deleteAnswer/:deleteInput", (req, res) => {
-  const newDelete = req.body
+app.delete("/api/:deleteInput", (req, res) => {
+  const newDelete = req.params.deleteInput
   console.log(newDelete)
   const answers = ["Of Course!",
     "You Betcha!",
     "Abolutely!",
     "Any Day Now!"]
-  for (let i = 0; 1 < answers.length; i++) {
+  for (let i = 0; i < answers.length; i++) {
     if  (newDelete === answers[i]) {
           answers.splice(i, 1)
-     res.status(200).send("Successfully deleted!")  
+     return res.status(200).send("Successfully deleted!")  
     }
     return res.status(400).send("Answer not found.")   
     }
