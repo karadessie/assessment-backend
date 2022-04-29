@@ -86,11 +86,12 @@
     document.getElementById("deleteAnswer").onchange = function (e) {
      e.preventDefault()
     const deleteInput = document.querySelector("#deleteInput")
-    const body = {newDelete: deleteInput.value}
+    const param = {newDelete: deleteInput.value}
      
-     console.log(body) 
-     axios.delete("http://localhost:4000/api/deleteAnswer/${deleteInput}", { data: body })
+     console.log(param) 
+     axios.delete(`http://localhost:4000/api/${deleteInput.value}`)
          .then(function (response) {
+           console.log(response.status)
            const data = response.data;
            alert(data)
          })
